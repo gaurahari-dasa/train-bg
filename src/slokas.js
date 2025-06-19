@@ -161,6 +161,7 @@ sloka2_45.branch = new VibhagaNode(
   "In Circle 0 verses, the Lord sets the standard for how a sadhaka's consciousness must be, which in a nutshell is that he shouldn't be concerned about self preservation. Now, in the following verses, the Lord explains what this state of consciousness translates to on a sensual (physical and mental) plane. These are also the symptoms or characteristics of a sthita prajna. In verse 2.71 (Circle 0), the Lord has hinted at this by saying that such a sadhaka doesn't engage in sense gratification.",
   sloka2_55
 );
+sloka2_70.next = sloka2_71;
 sloka2_71.next = sloka2_72;
 
 sloka2_55.next = sloka2_56;

@@ -1,52 +1,35 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue';
 import SlokaNode from './SlokaNode';
+import Vibhaga from './VibhagaNode';
+
 var v1 = new SlokaNode();
 v1.devanagari = `तानि सर्वाणि संयम्य युक्त आसीत मत्परः ।
 वशे हि यस्येन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता ॥ ६१ ॥
 `
+import { vibhagas } from './slokas';
+const train = ref([]);
+for (const vibhaga of vibhagas) {
+  train.value.push(vibhaga);
+  let sloka = vibhaga.firstSloka;
+  do {
+    train.value.push(sloka);
+  } while (sloka = sloka.next);
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <h3>{{ v1.devanagari }}</h3>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <main class="px-10">
+    <div class="flex flex-col gap-10">
+      <template v-for="obj in train">
+        <div v-if="obj instanceof Vibhaga">
+          <p>{{ obj.description }}</p>
+        </div>
+        <div v-else>
+          <h3 class="text-lg text-center">{{ obj.devanagari }}</h3>
+          <p class="text-amber-600">{{ obj.translation }}</p>
+        </div>
+      </template>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
   </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>

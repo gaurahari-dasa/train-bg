@@ -1,5 +1,3 @@
-import SlokaNode from "./SlokaNode";
-
 export default class VibhagaNode {
     caption = null;
     description = null;
