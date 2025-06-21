@@ -11,42 +11,45 @@ const train = ref([]);
 function enumerateSlokas(vibhaga, ix, branchLevel) {
     let sloka = vibhaga.firstSloka;
     do {
+        sloka = { ...sloka }
         sloka.branchLevel = branchLevel + 1;
         train.value.splice(++ix, 0, sloka)
     } while (sloka = sloka.next);
 }
 
-for (const vibhaga of vibhagas) {
+for (let vibhaga of vibhagas) {
+    vibhaga = { ...vibhaga };
     vibhaga.branchLevel = 0;
     train.value.push(vibhaga);
     enumerateSlokas(vibhaga, 0, -1);
 }
 
-function expand(node, ix) {
-    if (!node.branch) {
+function expand(ix) {
+    const item = train.value[ix];
+    if (!item.branch) {
         console.warn('Branch missing, Haribol!');
+        return;
     }
-    train.value.splice(++ix, 0, node.branch);
-    node.branch.branchLevel = node.branchLevel + 1
-    enumerateSlokas(node.branch, ix, node.branchLevel);
-    node.expanded = true;
+    const vibhaga = { ...item.branch };
+    train.value.splice(++ix, 0, vibhaga);
+    vibhaga.branchLevel = item.branchLevel + 1
+    enumerateSlokas(vibhaga, ix, item.branchLevel);
+    item.expanded = true;
 }
 
 function collapse(ix) {
     const item = train.value[ix];
     while (train.value[ix + 1].branchLevel > item.branchLevel) {
-        const node = train.value.splice(ix + 1, 1)[0];
-        delete node.branchLevel;
-        delete node.expanded;
+        train.value.splice(ix + 1, 1);
     }
-    delete item.expanded;
+    item.expanded = false;
 }
 </script>
 
 <template>
     <ul role="list" class="divide-y divide-gray-200">
         <li v-for="(item, ix) in train" :key="`${item.chapter}_${item.sloka}`" class="sm:px-4 sm:py-4">
-            <div v-if="item instanceof Vibhaga" class="relative">
+            <div v-if="Object.hasOwn(item, 'description')" class="relative">
                 <p>{{ item.description }}</p>
                 <SlokaToggle class="absolute bottom-0 right-0" />
             </div>
@@ -54,7 +57,7 @@ function collapse(ix) {
                 <h3 class="text-lg text-center">{{ item.devanagari }}</h3>
                 <p class="text-amber-600 mt-2 text-center">{{ item.translation }}</p>
                 <Divider class="mt-2.5" :expanded="item.expanded" v-show="item.branch"
-                    @click="item.expanded ? collapse(ix) : expand(item, ix)" />
+                    @click="item.expanded ? collapse(ix) : expand(ix)" />
             </div>
         </li>
     </ul>
