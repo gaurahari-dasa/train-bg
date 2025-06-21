@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import Divider from './Divider.vue';
 import Vibhaga from './VibhagaNode';
 import { vibhagas } from './slokas';
+import SlokaToggle from './SlokaToggle.vue';
 
 const train = ref([]);
 
@@ -45,8 +46,9 @@ function collapse(ix) {
 <template>
     <ul role="list" class="divide-y divide-gray-200">
         <li v-for="(item, ix) in train" :key="`${item.chapter}_${item.sloka}`" class="sm:px-4 sm:py-4">
-            <div v-if="item instanceof Vibhaga">
+            <div v-if="item instanceof Vibhaga" class="relative">
                 <p>{{ item.description }}</p>
+                <SlokaToggle class="absolute bottom-0 right-0" />
             </div>
             <div v-else>
                 <h3 class="text-lg text-center">{{ item.devanagari }}</h3>
