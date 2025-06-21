@@ -1,26 +1,24 @@
 <script setup>
 import { ref } from 'vue';
 
-import SlokaNode from './SlokaNode';
+import Divider from './Divider.vue';
 import Vibhaga from './VibhagaNode';
 import { vibhagas } from './slokas';
 
 const train = ref([]);
 
-function enumerateSlokas(vibhaga, ix) {
+function enumerateSlokas(vibhaga, ix, branchLevel) {
     let sloka = vibhaga.firstSloka;
     do {
-        if (ix === undefined) {
-            train.value.push(sloka);
-        } else {
-            train.value.splice(++ix, 0, sloka)
-        }
+        sloka.branchLevel = branchLevel + 1;
+        train.value.splice(++ix, 0, sloka)
     } while (sloka = sloka.next);
 }
 
 for (const vibhaga of vibhagas) {
+    vibhaga.branchLevel = 0;
     train.value.push(vibhaga);
-    enumerateSlokas(vibhaga);
+    enumerateSlokas(vibhaga, 0, -1);
 }
 
 function expand(node, ix) {
@@ -28,12 +26,19 @@ function expand(node, ix) {
         console.warn('Branch missing, Haribol!');
     }
     train.value.splice(++ix, 0, node.branch);
-    enumerateSlokas(node.branch, ix);
+    node.branch.branchLevel = node.branchLevel + 1
+    enumerateSlokas(node.branch, ix, node.branchLevel);
     node.expanded = true;
 }
 
-function collapse(node, ix) {
-    delete node.expanded;
+function collapse(ix) {
+    const item = train.value[ix];
+    while (train.value[ix + 1].branchLevel > item.branchLevel) {
+        const node = train.value.splice(ix + 1, 1)[0];
+        delete node.branchLevel;
+        delete node.expanded;
+    }
+    delete item.expanded;
 }
 </script>
 
@@ -46,10 +51,8 @@ function collapse(node, ix) {
             <div v-else>
                 <h3 class="text-lg text-center">{{ item.devanagari }}</h3>
                 <p class="text-amber-600 mt-2 text-center">{{ item.translation }}</p>
-                <button class="mt-2.5" v-show="item.branch"
-                    @click="item.expanded ? collapse(item, ix) : expand(item, ix)">{{ item.expanded ? 'Collapse' :
-                        'Expand'
-                    }}</button>
+                <Divider class="mt-2.5" v-show="item.branch"
+                    @click="item.expanded ? collapse(ix) : expand(item, ix)" />
             </div>
         </li>
     </ul>
