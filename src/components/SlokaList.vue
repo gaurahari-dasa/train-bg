@@ -51,7 +51,7 @@ function collapse(ix) {
             <div v-else>
                 <h3 class="text-lg text-center">{{ item.devanagari }}</h3>
                 <p class="text-amber-600 mt-2 text-center">{{ item.translation }}</p>
-                <Divider class="mt-2.5" v-show="item.branch"
+                <Divider class="mt-2.5" :expanded="item.expanded" v-show="item.branch"
                     @click="item.expanded ? collapse(ix) : expand(item, ix)" />
             </div>
         </li>

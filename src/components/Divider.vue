@@ -16,8 +16,9 @@
 import { ref } from 'vue';
 import { PlusIcon, MinusIcon } from '@heroicons/vue/20/solid'
 
+const props = defineProps(['expanded']);
 const emit = defineEmits(['click']);
-const expanded = ref(false);
+const expanded = ref(props.expanded);
 
 function clicked() {
   emit('click');
