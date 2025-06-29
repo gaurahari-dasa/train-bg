@@ -154,35 +154,82 @@ const sloka2_72 = new SlokaNode(
   "That is the way of the spiritual and godly life, after attaining which a man is not bewildered. Being so situated, even at the hour of death, one can enter into the kingdom of God."
 );
 
-sloka2_45.next = sloka2_70;
-//TODO: the following branch is wrong - we need to branch to 'Buddhi Yoga' (verse 47)
-sloka2_45.branch = new VibhagaNode(
-  "Characteristics of a Sthita Prajna",
-  "In Circle 0 verses, the Lord sets the standard for how a sadhaka's consciousness must be, which in a nutshell is that he shouldn't be concerned about self preservation. Now, in the following verses, the Lord explains what this state of consciousness translates to on a sensual (physical and mental) plane. These are also the symptoms or characteristics of a sthita prajna. In verse 2.71 (Circle 0), the Lord has hinted at this by saying that such a sadhaka doesn't engage in sense gratification.",
-  sloka2_55
-);
-sloka2_70.next = sloka2_71;
-sloka2_71.next = sloka2_72;
+// sloka2_45.next = sloka2_70;
+// //TODO: the following branch is wrong - we need to branch to 'Buddhi Yoga' (verse 47)
+// sloka2_45.branch = new VibhagaNode(
+//   "Characteristics of a Sthita Prajna",
+//   "In Circle 0 verses, the Lord sets the standard for how a sadhaka's consciousness must be, which in a nutshell is that he shouldn't be concerned about self preservation. Now, in the following verses, the Lord explains what this state of consciousness translates to on a sensual (physical and mental) plane. These are also the symptoms or characteristics of a sthita prajna. In verse 2.71 (Circle 0), the Lord has hinted at this by saying that such a sadhaka doesn't engage in sense gratification.",
+//   sloka2_55
+// );
+// sloka2_70.next = sloka2_71;
+// sloka2_71.next = sloka2_72;
 
-sloka2_55.next = sloka2_56;
-sloka2_56.next = sloka2_57;
-sloka2_57.next = sloka2_58;
-sloka2_58.next = sloka2_59;
-sloka2_59.next = sloka2_60;
+// sloka2_55.next = sloka2_56;
+// sloka2_56.next = sloka2_57;
+// sloka2_57.next = sloka2_58;
+// sloka2_58.next = sloka2_59;
+// sloka2_59.next = sloka2_60;
 
-sloka2_60.branch = new VibhagaNode(
-  "How to control the senses",
-  "In the following verses, the Lord says that the sure-shot way to control senses is to make Him the object of the senses and not engage them elsewhere. He also tells what happens if the sadhaka engages them elsewhere. It will be a sure-shot recipe for fall-down into the cycle of birth and death.",
-  sloka2_61
-);
-sloka2_60.next = sloka2_68;
-sloka2_68.next = sloka2_69;
+// sloka2_60.branch = new VibhagaNode(
+//   "How to control the senses",
+//   "In the following verses, the Lord says that the sure-shot way to control senses is to make Him the object of the senses and not engage them elsewhere. He also tells what happens if the sadhaka engages them elsewhere. It will be a sure-shot recipe for fall-down into the cycle of birth and death.",
+//   sloka2_61
+// );
+// sloka2_60.next = sloka2_68;
+// sloka2_68.next = sloka2_69;
 
-sloka2_61.next = sloka2_62;
-sloka2_62.next = sloka2_63;
-sloka2_63.next = sloka2_64;
-sloka2_64.next = sloka2_65;
-sloka2_65.next = sloka2_66;
-sloka2_66.next = sloka2_67;
+// sloka2_61.next = sloka2_62;
+// sloka2_62.next = sloka2_63;
+// sloka2_63.next = sloka2_64;
+// sloka2_64.next = sloka2_65;
+// sloka2_65.next = sloka2_66;
+// sloka2_66.next = sloka2_67;
 
-export const vibhagas = [new VibhagaNode("Prelude to Buddhi Yoga", "", sloka2_45)];
+// export const vibhagas = [new VibhagaNode("Prelude to Buddhi Yoga", "", sloka2_45)];
+
+export const caption = "Second Chapter of Srimad Bhagavad Gita";
+export const description = "Sample Train";
+export const train = [
+  {
+    leading: [sloka2_45],
+    branch: {
+      caption: "Characteristics of a Sthita Prajna",
+      description:
+        "In Circle 0 verses, the Lord sets the standard for how a sadhaka's consciousness must be, which in a nutshell is that he shouldn't be concerned about self preservation. Now, in the following verses, the Lord explains what this state of consciousness translates to on a sensual (physical and mental) plane. These are also the symptoms or characteristics of a sthita prajna. In verse 2.71 (Circle 0), the Lord has hinted at this by saying that such a sadhaka doesn't engage in sense gratification.",
+      train: [
+        {
+          leading: [
+            sloka2_55,
+            sloka2_56,
+            sloka2_57,
+            sloka2_58,
+            sloka2_59,
+            sloka2_60,
+          ],
+          branch: {
+            caption: "How to control the senses",
+            description:
+              "In the following verses, the Lord says that the sure-shot way to control senses is to make Him the object of the senses and not engage them elsewhere. He also tells what happens if the sadhaka engages them elsewhere. It will be a sure-shot recipe for fall-down into the cycle of birth and death.",
+            train: [
+              {
+                leading: [
+                  sloka2_61,
+                  sloka2_62,
+                  sloka2_63,
+                  sloka2_64,
+                  sloka2_65,
+                  sloka2_66,
+                  sloka2_67,
+                ],
+                branch: null,
+                trailing: [],
+              },
+            ],
+          },
+          trailing: [sloka2_68, sloka2_69],
+        },
+      ],
+    },
+    trailing: [sloka2_70, sloka2_71, sloka2_72],
+  },
+];
