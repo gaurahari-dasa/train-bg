@@ -1,5 +1,4 @@
 import SlokaNode from "./SlokaNode";
-import VibhagaNode from "./VibhagaNode";
 
 const sloka2_45 = new SlokaNode(
   2,

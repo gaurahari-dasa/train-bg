@@ -5,9 +5,14 @@ import { ref, watch } from 'vue';
 import SlokaToggle from './SlokaToggle.vue';
 
 const props = defineProps(['train', 'caption', 'description', 'hidden', 'mode']);
-const expanded = ref(props.mode === 'drilldown');
-const childHidden = ref(props.mode === 'drilldown');
-// watch(() => props.expanded, (expand) => expanded.value = expand);
+const expanded = ref();
+const childHidden = ref();
+watch(() => props.mode, function(mode) {
+    expanded.value = mode === 'drilldown';
+    childHidden.value = mode === 'drilldown';
+}, {
+    immediate: true,
+});
 /*
 * Haribol
 * A Vibhaga consists of a caption, description, a train of slokas,
@@ -19,11 +24,9 @@ const childHidden = ref(props.mode === 'drilldown');
 
 <template>
     <div v-show="!hidden">
-        <div class="relative">
+        <div class="relative m-4 w-3/4">
             <h3 class="text-lg text-center font-semibold">{{ caption }}</h3>
             <p>{{ description }}</p>
-            <!-- <SlokaToggle v-show="item.branchLevel > 0" :expanded="item.expanded" class="absolute bottom-0 right-0"
-            @click="toggleSloka(ix, $event)" /> -->
             <SlokaToggle :expanded class="absolute bottom-0 right-0" @click="expanded = !expanded" />
         </div>
 
@@ -31,7 +34,7 @@ const childHidden = ref(props.mode === 'drilldown');
             <Segment v-show="expanded" :slokas="bogey.leading" />
             <div v-if="bogey.branch">
                 <Divider class="mt-2.5" :hidden="childHidden" @click="childHidden = !childHidden" />
-                <Vibhaga class="ml-10" :train="bogey.branch.train" :caption="bogey.branch.caption" :description="bogey.branch.description" :hidden="childHidden" :mode />
+                <Vibhaga class="ml-20" :train="bogey.branch.train" :caption="bogey.branch.caption" :description="bogey.branch.description" :hidden="childHidden" :mode />
             </div>
             <Segment v-show="expanded" :slokas="bogey.trailing" />
         </div>
