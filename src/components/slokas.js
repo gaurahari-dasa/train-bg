@@ -186,15 +186,15 @@ const sloka2_72 = new SlokaNode(
 
 // export const vibhagas = [new VibhagaNode("Prelude to Buddhi Yoga", "", sloka2_45)];
 
-export const caption = "Second Chapter of Srimad Bhagavad Gita";
-export const description = "Sample Train";
+export const caption = "Prelude to Buddhi Yoga";
+export const description = "The Lord explains that the Vedas are primarily dealing with the subject of the three modes of material nature. One should raise above these modes, however. This approach will alleviate Arjuna from his distressed condition and is the path that Arjuna should take.";
 export const train = [
   {
     leading: [sloka2_45],
     branch: {
       caption: "Characteristics of a Sthita Prajna",
       description:
-        "In Circle 0 verses, the Lord sets the standard for how a sadhaka's consciousness must be, which in a nutshell is that he shouldn't be concerned about self preservation. Now, in the following verses, the Lord explains what this state of consciousness translates to on a sensual (physical and mental) plane. These are also the symptoms or characteristics of a sthita prajna. In verse 2.71 (Circle 0), the Lord has hinted at this by saying that such a sadhaka doesn't engage in sense gratification.",
+        "The Lord has set the standard for how a sadhaka's consciousness must be, which in a nutshell is that he shouldn't be concerned about self preservation. Now, in the following verses, the Lord explains what this state of consciousness translates to on a sensual (physical and mental) plane. These are also the symptoms or characteristics of a sthita prajna. In verse 2.71 (Circle 0), the Lord has hinted at this by saying that such a sadhaka doesn't engage in sense gratification.",
       train: [
         {
           leading: [
