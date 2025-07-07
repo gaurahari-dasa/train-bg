@@ -17,12 +17,12 @@ const mode = ref('hierarchical');
         description="View Vibhaga hierarchies or drill down starting from the topmost Vibhaga" name="view-method"
         @changed="mode = $event" :views="[
           {
-            caption: 'Hierarchical',
-            id: 'hierarchical',
+            caption: 'Divisional',
+            id: 'divisional',
           },
           {
-            caption: 'Drill Down',
-            id: 'drilldown',
+            caption: 'Drilled Down',
+            id: 'drilled-down',
           },
         ]" />
     </div>

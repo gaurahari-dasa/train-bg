@@ -8,8 +8,8 @@ const props = defineProps(['train', 'caption', 'description', 'hidden', 'mode'])
 const expanded = ref();
 const childHidden = ref();
 watch(() => props.mode, function(mode) {
-    expanded.value = mode === 'drilldown';
-    childHidden.value = mode === 'drilldown';
+    expanded.value = mode === 'drilled-down';
+    childHidden.value = mode === 'drilled-down';
 }, {
     immediate: true,
 });
