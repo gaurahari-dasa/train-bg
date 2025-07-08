@@ -3,14 +3,15 @@ export default class SlokaNode {
   sloka = null;
   devanagari = null;
   translation = null;
+  speaker = null;
   next = null;
-  branch = null; // Vibhaga, Haribol
 
-  constructor(chapter, sloka, devanagari, translation, next) {
+  constructor(chapter, sloka, devanagari, translation, speaker, next) {
     this.chapter = chapter;
     this.sloka = sloka;
     this.devanagari = devanagari;
     this.translation = translation;
+    this.speaker = speaker;
     this.next = next;
   }
 }

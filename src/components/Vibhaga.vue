@@ -15,10 +15,10 @@ watch(() => props.mode, function(mode) {
 });
 /*
 * Haribol
-* A Vibhaga consists of a caption, description, a train of slokas,
-* whether the slokas should be shown (expanded), whether the Vibhaga should itself be shown (hidden).
-* A train of slokas consists of an array of bogeys. A bogey consists of a list of slokas (leading), a
-* (possibly null) vibhaga (branch) and a (possibly empty) trailing list of slokas.
+* A Vibhaga (branch) consists of a caption, description, a train of slokas,
+* whether the slokas should be shown (expanded) and whether the Vibhaga should itself be shown (hidden).
+* A train of slokas consists of an array of bogeys. A bogey consists of a leading list of slokas,
+* a (possibly null) vibhaga (branch) and a (possibly empty) trailing list of slokas.
 */
 </script>
 

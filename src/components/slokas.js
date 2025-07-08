@@ -11,10 +11,10 @@ const sloka2_45 = new SlokaNode(
 const sloka2_55 = new SlokaNode(
   2,
   55,
-  `श्रीभगवानुवाच
-प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान् ।
+  `प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान् ।
 आत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते ॥ ५५ ॥`,
-  "The Blessed Lord said: O Pārtha, when a man gives up all varieties of sense desire which arise from mental concoction, and when his mind finds satisfaction in the self alone, then he is said to be in pure transcendental consciousness."
+  "The Blessed Lord said: O Pārtha, when a man gives up all varieties of sense desire which arise from mental concoction, and when his mind finds satisfaction in the self alone, then he is said to be in pure transcendental consciousness.",
+  "श्रीभगवानुवाच"
 );
 
 const sloka2_56 = new SlokaNode(
@@ -187,7 +187,8 @@ const sloka2_72 = new SlokaNode(
 // export const vibhagas = [new VibhagaNode("Prelude to Buddhi Yoga", "", sloka2_45)];
 
 export const caption = "Prelude to Buddhi Yoga";
-export const description = "The Lord explains that the Vedas are primarily dealing with the subject of the three modes of material nature. One should raise above these modes, however. This approach will alleviate Arjuna from his distressed condition and is the path that Arjuna should take.";
+export const description =
+  "The Lord explains that the Vedas are primarily dealing with the subject of the three modes of material nature. One should raise above these modes, however. This approach will alleviate Arjuna from his distressed condition and is the path that Arjuna should take.";
 export const train = [
   {
     leading: [sloka2_45],
