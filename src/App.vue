@@ -5,7 +5,7 @@ import { description, train } from './components/slokas';
 import RadioGroup from './components/RadioGroup.vue';
 import { ref } from 'vue';
 
-const mode = ref('hierarchical');
+const viewMode = ref('hierarchical');
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const mode = ref('hierarchical');
     <div>
       <RadioGroup legend="View Modes"
         description="View Vibhaga hierarchies or drill down starting from the topmost Vibhaga" name="view-method"
-        @changed="mode = $event" :views="[
+        @changed="viewMode = $event" :options="[
           {
             caption: 'Divisional',
             id: 'divisional',
@@ -24,9 +24,13 @@ const mode = ref('hierarchical');
             caption: 'Drilled Down',
             id: 'drilled-down',
           },
+          {
+            caption: 'Singular',
+            id: 'singular',
+          },
         ]" />
     </div>
     <!-- <SlokaList /> -->
-    <Vibhaga :train :description :hidden="false" :mode />
+    <Vibhaga v-if="viewMode != 'singular'" :train :description :hidden="false" :mode="viewMode" />
   </main>
 </template>
